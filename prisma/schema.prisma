@@ -11,23 +11,21 @@ datasource db {
 }
 
 model Manga {
-  id           Int     @id @default(autoincrement())
-  title        String  @unique
+  id           Int      @id @default(autoincrement())
+  title        String   @unique
   poster       String
   poster_webp  String
   rating       String
   alternatives String
   artists      String
-  genres       Genre[]
+  genres       String[]
   manga_type   String
-  release      Int
+  release      String
   status       String
   summary      String
 }
 
 model Genre {
-  id      Int    @id @default(autoincrement())
-  name    String @unique
-  Manga   Manga? @relation(fields: [mangaId], references: [id])
-  mangaId Int?
+  id   Int    @id @default(autoincrement())
+  name String @unique
 }

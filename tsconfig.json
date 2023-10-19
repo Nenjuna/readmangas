@@ -26,6 +26,9 @@
   "exclude": ["node_modules"],
   "ts-node": {
         // Tell ts-node CLI to install the --loader automatically
-        "esm": true
+        "esm": true,
+        "compilerOptions": {
+      "module": "commonjs"
+    }
     }
 }

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface Genre {
   genre: String;
   color: String;
@@ -144,12 +146,14 @@ const Genre = () => {
             a.genre.toLowerCase().localeCompare(b.genre.toLowerCase())
           )
           .map((genre, index) => (
-            <div
-              className={`w-48 sm:w-48 p-4 lg:w-96 md:w-60 h-32 break-all text-center sm:h-32 lg:h-72 md:h-52 border opacity-75 border-inherit bg-blend-normal font-mono shadow-inherit font-semibold flex tracking-wide shadow-xl rounded-lg justify-center items-center text-lg sm:text-lg md:text-2xl lg:text-3xl ${genre.color}`}
-              key={index}
-            >
-              {genre.genre}
-            </div>
+            <Link href={`/${genre.genre.toLowerCase().split(" ").join("-")}`}>
+              <div
+                className={`w-48 sm:w-48 p-4 lg:w-96 md:w-60 h-32 break-all text-center sm:h-32 lg:h-72 md:h-52 border opacity-75 border-inherit bg-blend-normal font-mono shadow-inherit font-semibold flex tracking-wide shadow-xl rounded-lg justify-center items-center text-lg sm:text-lg md:text-2xl lg:text-3xl ${genre.color}`}
+                key={index}
+              >
+                {genre.genre}
+              </div>
+            </Link>
           ))}
       </div>
     </div>
