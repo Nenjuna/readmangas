@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Manga {
+  id           Int     @id @default(autoincrement())
+  title        String  @unique
+  poster       String
+  poster_webp  String
+  rating       String
+  alternatives String
+  artists      String
+  genres       Genre[]
+  manga_type   String
+  release      Int
+  status       String
+  summary      String
+}
+
+model Genre {
+  id      Int    @id @default(autoincrement())
+  name    String @unique
+  Manga   Manga? @relation(fields: [mangaId], references: [id])
+  mangaId Int?
+}
